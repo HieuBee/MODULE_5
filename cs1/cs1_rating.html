@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let courses = [
+            {
+                id: 1,
+                title: "ReactJS Tutorial",
+                rating: 4.2
+            },
+            {
+                id: 2,
+                title: "Angular Tutorial",
+                rating: 2.5
+            },
+            {
+                id: 3,
+                title: "VueJs Tutorial",
+                rating: 3.8
+            },
+            {
+                id: 4,
+                title: "Java Tutorial",
+                rating: 4
+            },
+            {
+                id: 5,
+                title: "Javascript Tutorial",
+                rating: 3.5
+            }
+        ];
+
+        let returnRating = courses.map((courses) => {
+            if(courses.rating >= 4){
+                document.write('"[' + courses.id + ' - ' + courses.title + ' - ' + courses.rating + ']"' + '<br>');
+            }
+        });
+    </script>
+</body>
+</html>
