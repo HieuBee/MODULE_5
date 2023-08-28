@@ -31,8 +31,8 @@ export function HealthDeclaration() {
                                     phone: "",
                                     email: "",
                                     territory: "",
-                                    symptom: '1',
-                                    contact: '1',
+                                    symptom: [],
+                                    contact: [],
                                 }
                             }
                                     onSubmit={(values, {setSubmitting}) => {
@@ -216,8 +216,8 @@ export function HealthDeclaration() {
                                     </label>
                                     <div className="form-check">
                                         <Field name="contact" className="form-check-input" type="checkbox" value="1"
-                                               id="flexCheckDefault"/>
-                                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                                               id="nghi"/>
+                                        <label className="form-check-label" htmlFor="nghi">
                                             Người bệnh hoặc nghi ngờ mắc bệnh COVID-19
                                         </label>
                                     </div>
