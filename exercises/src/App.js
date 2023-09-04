@@ -8,6 +8,12 @@ import {Contact} from "./component/cs5/Contact";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {HealthDeclaration} from "./component/cs5/HealthDeclaration";
+import {Library} from "./component/cs5/Library";
+import {TodoList} from "./component/cs6_API_Clients/ex1/TodoList";
+import {Book} from "./component/cs6_API_Clients/ex2/Book";
+import {Header} from "./component/case_study/view/Header";
+import {Footer} from "./component/case_study/view/Footer";
+
 
 function App() {
     return (
@@ -17,7 +23,12 @@ function App() {
             {/*<Select />*/}
             {/*<Timer />*/}
             {/*<Contact />*/}
-            <HealthDeclaration />
+            {/*<HealthDeclaration />*/}
+            {/*<Library />*/}
+            {/*<TodoList />*/}
+            {/*<Book />*/}
+            <Header />
+            <Footer />
 
             <ToastContainer />
         </>

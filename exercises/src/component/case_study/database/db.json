@@ -1,0 +1,107 @@
+{
+  "service": [
+    {
+      "id": 1,
+      "name": "Villa",
+      "s": 100,
+      "expense": 1600,
+      "people": 5,
+      "rentalPeriod": "Day"
+    },
+    {
+      "id": 2,
+      "name": "House",
+      "s": 70,
+      "expense": 36000,
+      "people": 2,
+      "rentalPeriod": "Year"
+    },
+    {
+      "id": 3,
+      "name": "Villa",
+      "s": 135,
+      "expense": 1400,
+      "people": 2,
+      "rentalPeriod": "Day"
+    },
+    {
+      "id": 4,
+      "name": "Room",
+      "s": 45,
+      "expense": 300,
+      "people": 2,
+      "rentalPeriod": "Day"
+    },
+    {
+      "id": 5,
+      "name": "Room",
+      "s": 65,
+      "expense": 22000,
+      "people": 3,
+      "rentalPeriod": "Month"
+    },
+    {
+      "name": "Villa",
+      "s": 0,
+      "expense": 21000,
+      "people": 0,
+      "rentalPeriod": "Month",
+      "area": 138,
+      "id": 6
+    },
+    {
+      "name": "Room",
+      "s": 0,
+      "expense": 200,
+      "people": 0,
+      "rentalPeriod": "Day",
+      "area": 45,
+      "id": 7
+    }
+  ],
+  "customer": [
+    {
+      "id": 1,
+      "name": "Nam",
+      "birthday": "22/02/2002",
+      "gender": 1,
+      "idCard": "0228312",
+      "phone": "0983126312",
+      "level": "Silver",
+      "address": "22 BTX"
+    },
+    {
+      "id": 2,
+      "name": "Mai",
+      "birthday": "01/12/2004",
+      "gender": 0,
+      "idCard": "132412i",
+      "phone": "0933454512",
+      "level": "Member",
+      "address": "12 MTL"
+    },
+    {
+      "id": 3,
+      "name": "Hoàng",
+      "birthday": "17/04/1988",
+      "gender": 1,
+      "idCard": "0987122",
+      "phone": "0983981512",
+      "level": "Gold",
+      "address": "22 BTX"
+    },
+    {
+      "id": 4,
+      "name": "Khue",
+      "birthday": "17/12/2000",
+      "gender": 0,
+      "idCard": "1238312",
+      "phone": "0124126312",
+      "level": "Diamond",
+      "address": "32 TTT"
+    }
+  ],
+  "employee": {
+    "name": "typicode"
+  }
+}
