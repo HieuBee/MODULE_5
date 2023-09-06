@@ -13,11 +13,19 @@ import {TodoList} from "./component/cs6_API_Clients/ex1/TodoList";
 import {Book} from "./component/cs6_API_Clients/ex2/Book";
 import {Header} from "./component/case_study/view/Header";
 import {Footer} from "./component/case_study/view/Footer";
+import {BookUpdate} from "./component/cs6_API_Clients/ex2/BookUpdate";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
 function App() {
     return (
         <>
+        <BrowserRouter>
+        <Routes>
+            <Route path="/edit/:id" element={<BookUpdate />}></Route>
+            <Route path="" element={<Book />}></Route>
+        </Routes>
+        </BrowserRouter>
             {/*<Counter />*/}
             {/*<Counter1 />*/}
             {/*<Select />*/}
@@ -26,10 +34,8 @@ function App() {
             {/*<HealthDeclaration />*/}
             {/*<Library />*/}
             {/*<TodoList />*/}
-            {/*<Book />*/}
-            <Header />
-            <Footer />
-
+            {/*<Header />*/}
+            {/*<Footer />*/}
             <ToastContainer />
         </>
     );

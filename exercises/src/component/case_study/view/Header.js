@@ -12,7 +12,7 @@ export function Header() {
                             <div className="menu-wrap">
                                 <ul className="menu">
                                     <li className="menu-item">
-                                        <a href="#">Service</a>
+                                        <span>Service</span>
                                         <ul className="drop-menu">
                                             <li className="drop-menu-item">
                                                 <NavLink to='/services'>List</NavLink>
@@ -23,7 +23,7 @@ export function Header() {
                                         </ul>
                                     </li>
                                     <li className="menu-item">
-                                        <a href="#">Customer</a>
+                                        <span>Customer</span>
                                         <ul className="drop-menu">
                                             <li className="drop-menu-item">
                                                 <NavLink to='/customers'>List</NavLink>
@@ -34,7 +34,7 @@ export function Header() {
                                         </ul>
                                     </li>
                                     <li className="menu-item">
-                                        <a href="#">Employee</a>
+                                        <span>Employee</span>
                                         <ul className="drop-menu">
                                             <li className="drop-menu-item">
                                                 <NavLink to='/employees'>List</NavLink>

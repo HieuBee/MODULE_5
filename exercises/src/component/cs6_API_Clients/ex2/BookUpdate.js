@@ -2,33 +2,27 @@ import {useEffect, useState} from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {toast} from "react-toastify";
 import * as bookService from "../service/Service";
-import {NavLink, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 
-export function Book() {
-    const [bookList, setBookList] = useState([]);
+
+export function BookUpdate() {
+    const [book, setBook] = useState([]);
     const idParam = useParams();
     const navigate = useNavigate();
     useEffect(() => {
-        getAll()
+        getBook()
     }, []);
 
-    const getAll = async () => {
-        const result = await bookService.getAllBook();
-        setBookList(result);
+    const getBook = async () => {
+        const result = await bookService.getBook(idParam.id);
+        setBook(result);
     };
 
-    const deleteBook = async (id) => {
-        await bookService.deleteBook(id);
+    const updateBook = async (id, value) => {
+        await bookService.updateBook(id, value);
         navigate("");
-        toast.success("Xoá thành công")
-        getAll();
-    };
-
-    const addBook = async (value) => {
-        await bookService.addNewBook(value);
-        toast.success("Thêm mới thành công")
-        getAll();
+        toast.success("Chỉnh sửa thành công")
     };
 
     return (
@@ -39,17 +33,19 @@ export function Book() {
                     </div>
                     <div className="col-md-6">
                         <div className="m-4">
-                            <Formik initialValues={
+                            <Formik
+                                enableReinitialize={true}
+
+                                initialValues={
                                 {
-                                    title: "",
-                                    quantity: 0
+                                    title: book.title,
+                                    quantity: book.quantity
                                 }
                             }
                                     onSubmit={(values, {setSubmitting}) => {
                                         //Call
                                         console.log(values);
-
-                                        addBook(values);
+                                        updateBook(idParam.id, values);
                                         setSubmitting(false);
                                     }}
                             >
@@ -69,35 +65,6 @@ export function Book() {
                                 </Form>
                             </Formik>
                         </div>
-
-                        <table className="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Quantity</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {bookList.map((book) => {
-                                return (
-                                    <>
-                                        <tr>
-                                            <td>{book.id}</td>
-                                            <td>{book.title}</td>
-                                            <td>{book.quantity}</td>
-                                            <NavLink to={`/edit/${book.id}`}>
-                                                <button className="btn btn-primary">Edit</button>
-                                            </NavLink>
-                                            <button onClick={() => {
-                                                deleteBook(book.id);
-                                            }} className="btn btn-danger">Delete</button>
-                                        </tr>
-                                    </>
-                                )
-                            })}
-                            </tbody>
-                        </table>
                     </div>
                     <div className="col-md-3">
                     </div>

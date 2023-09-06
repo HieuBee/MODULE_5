@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import {ErrorMessage, Field, Form, Formik} from "formik";
-import {toast} from "react-toastify";
-import * as Yup from "yup";
+// import {ErrorMessage, Field, Form, Formik} from "formik";
+// import {toast} from "react-toastify";
+// import * as Yup from "yup";
 import * as service from "../../case_study/conectDb/conectDb";
 
 export function FuramaServiceList() {

@@ -37,3 +37,30 @@ export const addNewBook = async(value) => {
         console.log(e)
     }
 }
+
+export const getBook  = async (id) => {
+    try {
+        const result = await axios.get(`http://localhost:3001/books/${id}`);
+        return result.data;
+    } catch (e) {
+        console.log(e)
+    }
+};
+
+export const updateBook = async(id, value) => {
+    try {
+        const result = await axios.put(`http://localhost:3001/books/${id}`, value);
+        return result.data;
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export const deleteBook  = async (id) => {
+    try {
+        const result = await axios.delete(`http://localhost:3001/books/${id}`);
+        return result.data;
+    } catch (e) {
+        console.log(e)
+    }
+};
