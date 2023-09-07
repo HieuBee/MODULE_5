@@ -1,15 +1,28 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {toast} from "react-toastify";
-import * as service from "../conectAPI/conectAPI";
-import {useNavigate} from "react-router-dom";
+import * as frService from "../conectAPI/conectAPI";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {updateCustomer} from "../conectAPI/conectAPI";
 
-export function FuramaCustomerCreate() {
+export function FuramaCustomerUpdate() {
+    const [customer, setCustomer] = useState([]);
     const navigate = useNavigate();
+    const idParam = useParams();
 
-    const addCustomer = async (value) => {
-        await service.addNewCustomer(value);
+    useEffect(() => {
+        getCustomer()
+    }, []);
+
+    const getCustomer = async () => {
+        const result = await frService.getCustomer(idParam.id);
+        setCustomer(result);
+    };
+
+    const updateCustomer = async (id, value) => {
+        await frService.updateCustomer(id, value);
         navigate("/customers")
-        toast.success("Thêm mới thành công")
+        toast.success("Chỉnh sửa thành công")
     };
 
     return (
@@ -20,19 +33,22 @@ export function FuramaCustomerCreate() {
                     </div>
                     <div className="col-md-6">
                         <div className="m-4">
-                            <Formik initialValues={
+                            <Formik
+                                enableReinitialize={true}
+
+                                initialValues={
                                 {
-                                    name: "",
-                                    birthday: "",
-                                    gender: 1,
-                                    idCard: 0,
-                                    phone: 0,
-                                    level: "",
-                                    address: ""
+                                    name: customer.name,
+                                    birthday: customer.birthday,
+                                    gender: customer.gender,
+                                    idCard: customer.idCard,
+                                    phone: customer.phone,
+                                    level: customer.level,
+                                    address: customer.address
                                 }
                             }
                                     onSubmit={(values, {setSubmitting}) => {
-                                        addCustomer(values);
+                                        updateCustomer(idParam.id, values);
                                         setSubmitting(false);
                                     }}
                             >
@@ -80,6 +96,7 @@ export function FuramaCustomerCreate() {
                     <div className="col-md-3">
                     </div>
                 </div>
+
             </div>
         </>
     )

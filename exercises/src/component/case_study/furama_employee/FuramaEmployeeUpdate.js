@@ -1,15 +1,27 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {toast} from "react-toastify";
-import * as service from "../conectAPI/conectAPI";
-import {useNavigate} from "react-router-dom";
+import * as frService from "../conectAPI/conectAPI";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 
-export function FuramaServiceCreate() {
+export function FuramaEmployeeUpdate() {
+    const [service, setService] = useState([]);
     const navigate = useNavigate();
+    const idParam = useParams();
 
-    const addService = async (value) => {
-        await service.addNewService(value);
+    useEffect(() => {
+        getService()
+    }, []);
+
+    const getService = async () => {
+        const result = await frService.getService(idParam.id);
+        setService(result);
+    };
+
+    const updateService = async (id, value) => {
+        await frService.updateService(id, value);
         navigate("/services")
-        toast.success("Thêm mới thành công")
+        toast.success("Chỉnh sửa thành công")
     };
 
     return (
@@ -20,24 +32,27 @@ export function FuramaServiceCreate() {
                     </div>
                     <div className="col-md-6">
                         <div className="m-4">
-                            <Formik initialValues={
-                                {
-                                    name: "",
-                                    s: 0,
-                                    expense: 0,
-                                    people: 0,
-                                    rentalPeriod: ""
-                                    /*"name": "Villa",
-                                    "s": 100,
-                                    "expense": 1600,
-                                    "people": 5,
-                                    "rentalPeriod": "Day"*/
+                            <Formik
+                                enableReinitialize={true}
+
+                                initialValues={
+                                    {
+                                        name: service.name,
+                                        s: service.s,
+                                        expense: service.expense,
+                                        people: service.people,
+                                        rentalPeriod: service.rentalPeriod
+                                        /*"name": "Villa",
+                                        "s": 100,
+                                        "expense": 1600,
+                                        "people": 5,
+                                        "rentalPeriod": "Day"*/
+                                    }
                                 }
-                            }
-                                    onSubmit={(values, {setSubmitting}) => {
-                                        addService(values);
-                                        setSubmitting(false);
-                                    }}
+                                onSubmit={(values, {setSubmitting}) => {
+                                    updateService(idParam.id, values);
+                                    setSubmitting(false);
+                                }}
                             >
                                 <Form>
                                     <div className="mb-3">
@@ -54,11 +69,6 @@ export function FuramaServiceCreate() {
                                         <label className="form-label" htmlFor="quan">Expense</label>
                                         <Field type="number" name="expense" className="form-control"/>
                                         <ErrorMessage name="expense" className="form-err" component='span'></ErrorMessage>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label" htmlFor="quan">People</label>
-                                        <Field type="number" name="people" className="form-control"/>
-                                        <ErrorMessage name="people" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Rental Period</label>

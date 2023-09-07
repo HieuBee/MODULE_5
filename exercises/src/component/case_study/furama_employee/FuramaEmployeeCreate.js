@@ -3,7 +3,7 @@ import {toast} from "react-toastify";
 import * as service from "../conectAPI/conectAPI";
 import {useNavigate} from "react-router-dom";
 
-export function FuramaServiceCreate() {
+export function FuramaEmployeeCreate() {
     const navigate = useNavigate();
 
     const addService = async (value) => {

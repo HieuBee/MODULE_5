@@ -15,17 +15,20 @@ import {Header} from "./component/case_study/view/Header";
 import {Footer} from "./component/case_study/view/Footer";
 import {BookUpdate} from "./component/cs6_API_Clients/ex2/BookUpdate";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {FuramaServiceList} from "./component/case_study/furama_service/FuramaServiceList";
+import {FuramaServiceCreate} from "./component/case_study/furama_service/FuramaServiceCreate";
+import {FuramaServiceUpdate} from "./component/case_study/furama_service/FuramaServiceUpdate";
 
 
 function App() {
     return (
         <>
-        <BrowserRouter>
-        <Routes>
-            <Route path="/edit/:id" element={<BookUpdate />}></Route>
-            <Route path="" element={<Book />}></Route>
-        </Routes>
-        </BrowserRouter>
+            {/*<BrowserRouter>*/}
+            {/*<Routes>*/}
+            {/*    <Route path="/edit/:id" element={<BookUpdate />}></Route>*/}
+            {/*    <Route path="" element={<Book />}></Route>*/}
+            {/*</Routes>*/}
+            {/*</BrowserRouter>*/}
             {/*<Counter />*/}
             {/*<Counter1 />*/}
             {/*<Select />*/}
@@ -34,8 +37,8 @@ function App() {
             {/*<HealthDeclaration />*/}
             {/*<Library />*/}
             {/*<TodoList />*/}
-            {/*<Header />*/}
-            {/*<Footer />*/}
+            <Header />
+            <Footer />
             <ToastContainer />
         </>
     );

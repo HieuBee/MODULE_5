@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import * as service from "../conectAPI/conectAPI";
 import {NavLink} from "react-router-dom";
 
-export function FuramaServiceList() {
+export function FuramaEmployeeList() {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ export function FuramaServiceList() {
                                             <td>{s.people}</td>
                                             <td>{s.rentalPeriod}</td>
                                             <td>
-                                                <NavLink to={`/service/update/${s.id}`}>
+                                                <NavLink to={`/services/update/${s.id}`}>
                                                     <button className="btn btn-danger">Update</button>
                                                 </NavLink>
                                             </td>
