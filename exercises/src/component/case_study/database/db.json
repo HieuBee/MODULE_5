@@ -1,4 +1,18 @@
 {
+  "nameService": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room"
+    }
+  ],
   "service": [
     {
       "id": 1,
@@ -65,6 +79,14 @@
       "people": 2,
       "rentalPeriod": "Day",
       "id": 8
+    },
+    {
+      "name": "House",
+      "s": 200,
+      "expense": 77000,
+      "people": 3,
+      "rentalPeriod": "Year",
+      "id": 9
     }
   ],
   "customer": [
@@ -155,7 +177,7 @@
   "employee": [
     {
       "name": "typicode",
-      "birthday" : 22
+      "birthday": 22
     }
   ],
   "contract": [

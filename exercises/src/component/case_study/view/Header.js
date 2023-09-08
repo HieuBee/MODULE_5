@@ -27,7 +27,7 @@ export function Header() {
                                                 <NavLink to='/services'>List</NavLink>
                                             </li>
                                             <li className="drop-menu-item">
-                                                <NavLink to='/services/create'>Create</NavLink>
+                                                <NavLink to='/service/create'>Create</NavLink>
                                             </li>
                                         </ul>
                                     </li>

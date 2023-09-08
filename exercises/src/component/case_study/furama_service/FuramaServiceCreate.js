@@ -2,9 +2,21 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import {toast} from "react-toastify";
 import * as service from "../conectAPI/conectAPI";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 export function FuramaServiceCreate() {
     const navigate = useNavigate();
+    const [nameServices, setNameServices] = useState([]);
+    const rentalPeriod = ["Day", "Month", "Year"];
+
+    useEffect(() => {
+        getNameServices()
+    }, []);
+
+    const getNameServices = async () => {
+        const result = await service.getNameService();
+        setNameServices(result);
+    };
 
     const addService = async (value) => {
         await service.addNewService(value);
@@ -27,11 +39,6 @@ export function FuramaServiceCreate() {
                                     expense: 0,
                                     people: 0,
                                     rentalPeriod: ""
-                                    /*"name": "Villa",
-                                    "s": 100,
-                                    "expense": 1600,
-                                    "people": 5,
-                                    "rentalPeriod": "Day"*/
                                 }
                             }
                                     onSubmit={(values, {setSubmitting}) => {
@@ -42,7 +49,15 @@ export function FuramaServiceCreate() {
                                 <Form>
                                     <div className="mb-3">
                                         <label className="form-label">Name</label>
-                                        <Field type="text" name="name" className="form-control"/>
+                                        <Field as="select" name="name" className="form-select">
+                                            {nameServices.map((n) => {
+                                                return (
+                                                    <>
+                                                        <option value={n.name}>{n.name}</option>
+                                                    </>
+                                                )
+                                            })}
+                                        </Field>
                                         <ErrorMessage name="id" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
@@ -62,7 +77,15 @@ export function FuramaServiceCreate() {
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Rental Period</label>
-                                        <Field type="text" name="rentalPeriod" className="form-control"/>
+                                        <Field as="select" name="rentalPeriod" className="form-select">
+                                            {rentalPeriod.map((n) => {
+                                                return (
+                                                    <>
+                                                        <option value={n}>{n}</option>
+                                                    </>
+                                                )
+                                            })}
+                                        </Field>
                                         <ErrorMessage name="rentalPeriod" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <button className="btn btn-primary">Submit</button>

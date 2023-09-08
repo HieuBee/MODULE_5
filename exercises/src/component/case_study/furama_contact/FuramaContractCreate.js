@@ -57,7 +57,7 @@ export function FuramaContractCreate() {
                                         <label className="form-label">Total: </label>
                                         <Field name="total" type="number" className="form-control" />
                                     </div>
-                                    <button type="submit" className="btn btn-info">Submit</button>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </Form>
                             </Formik>
                         </div>
