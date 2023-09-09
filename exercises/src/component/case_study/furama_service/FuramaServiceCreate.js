@@ -3,6 +3,7 @@ import {toast} from "react-toastify";
 import * as service from "../conectAPI/conectAPI";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
+import * as Yup from "yup";
 
 export function FuramaServiceCreate() {
     const navigate = useNavigate();
@@ -32,24 +33,40 @@ export function FuramaServiceCreate() {
                     </div>
                     <div className="col-md-6">
                         <div className="m-4">
-                            <Formik initialValues={
-                                {
-                                    name: "",
-                                    s: 0,
-                                    expense: 0,
-                                    people: 0,
-                                    rentalPeriod: ""
+                            <Formik
+                                initialValues={
+                                    {
+                                        name: "",
+                                        s: undefined,
+                                        expense: undefined,
+                                        people: undefined,
+                                        rentalPeriod: ""
+                                    }
                                 }
-                            }
-                                    onSubmit={(values, {setSubmitting}) => {
-                                        addService(values);
-                                        setSubmitting(false);
-                                    }}
+                                onSubmit={(values, {setSubmitting}) => {
+                                    addService(values);
+                                    setSubmitting(false);
+                                }}
+                                validationSchema={
+                                    Yup.object({
+                                        name: Yup.string()
+                                            .required("Required"),
+                                        s: Yup.number()
+                                            .required("Required"),
+                                        expense: Yup.number()
+                                            .required("Required"),
+                                        people: Yup.number()
+                                            .required("Required"),
+                                        rentalPeriod: Yup.string()
+                                            .required("Required"),
+                                    })
+                                }
                             >
                                 <Form>
                                     <div className="mb-3">
                                         <label className="form-label">Name</label>
                                         <Field as="select" name="name" className="form-select">
+                                            <option value=""></option>
                                             {nameServices.map((n) => {
                                                 return (
                                                     <>
@@ -58,11 +75,11 @@ export function FuramaServiceCreate() {
                                                 )
                                             })}
                                         </Field>
-                                        <ErrorMessage name="id" className="form-err" component='span'></ErrorMessage>
+                                        <ErrorMessage name="name" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Area</label>
-                                        <Field type="number" name="s" className="form-control"/>
+                                        <Field type="number" name="s" className="form-control" defaultValue={undefined}/>
                                         <ErrorMessage name="s" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
@@ -78,6 +95,7 @@ export function FuramaServiceCreate() {
                                     <div className="mb-3">
                                         <label className="form-label">Rental Period</label>
                                         <Field as="select" name="rentalPeriod" className="form-select">
+                                            <option value=""></option>
                                             {rentalPeriod.map((n) => {
                                                 return (
                                                     <>
@@ -86,7 +104,7 @@ export function FuramaServiceCreate() {
                                                 )
                                             })}
                                         </Field>
-                                        <ErrorMessage name="rentalPeriod" className="form-err" component='span'></ErrorMessage>
+                                        {/*<ErrorMessage name="rentalPeriod" className="form-err" component='span'></ErrorMessage>*/}
                                     </div>
                                     <button className="btn btn-primary">Submit</button>
                                 </Form>

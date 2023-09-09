@@ -2,6 +2,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import {toast} from "react-toastify";
 import * as service from "../conectAPI/conectAPI";
 import {useNavigate} from "react-router-dom";
+import * as Yup from "yup";
 
 export function FuramaCustomerCreate() {
     const navigate = useNavigate();
@@ -20,21 +21,44 @@ export function FuramaCustomerCreate() {
                     </div>
                     <div className="col-md-6">
                         <div className="m-4">
-                            <Formik initialValues={
-                                {
-                                    name: "",
-                                    birthday: "",
-                                    gender: 1,
-                                    idCard: 0,
-                                    phone: 0,
-                                    level: "",
-                                    address: ""
+                            <Formik
+                                initialValues={
+                                    {
+                                        name: "",
+                                        birthday: "",
+                                        gender: 1,
+                                        idCard: "",
+                                        phone: "",
+                                        level: "",
+                                        address: ""
+                                    }
                                 }
-                            }
-                                    onSubmit={(values, {setSubmitting}) => {
-                                        addCustomer(values);
-                                        setSubmitting(false);
-                                    }}
+                                onSubmit={(values, {setSubmitting}) => {
+                                    addCustomer(values);
+                                    setSubmitting(false);
+                                }}
+                                validationSchema={
+                                    Yup.object({
+                                        name: Yup.string()
+                                            .required("Required")
+                                            .matches(/^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(?: [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)*/, "Tên không đúng định dạng!"),
+                                        phone: Yup.string()
+                                            .required("Required")
+                                            .matches(/((090|091)+([0-9]{7})) | ((84)+[+]+(90|91)+([0-9]{8}))/, "Số điện thoại không đúng định dạng!"),
+                                        idCard: Yup.string()
+                                            .required("Required")
+                                            .matches(/([0-9]{9}) | ([0-9]{12})/, "CMNN/CCCD không đúng định dạng!"),
+                                        email: Yup.string()
+                                            .required("Required")
+                                            .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email không đúng định dạng!"),
+                                        address: Yup.string()
+                                            .required("Required"),
+                                        level: Yup.string()
+                                            .required("Required"),
+                                        birthday: Yup.string()
+                                            .required("Required"),
+                                    })
+                                }
                             >
                                 <Form>
                                     <div className="mb-3">
@@ -44,7 +68,7 @@ export function FuramaCustomerCreate() {
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Birthday</label>
-                                        <Field type="text" name="birthday" className="form-control"/>
+                                        <Field type="date" name="birthday" className="form-control"/>
                                         <ErrorMessage name="birthday" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
@@ -57,12 +81,12 @@ export function FuramaCustomerCreate() {
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label" htmlFor="quan">Id Card</label>
-                                        <Field type="number" name="idCard" className="form-control"/>
+                                        <Field type="text" name="idCard" className="form-control"/>
                                         <ErrorMessage name="idCard" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Phone</label>
-                                        <Field type="number" name="phone" className="form-control"/>
+                                        <Field type="text" name="phone" className="form-control"/>
                                         <ErrorMessage name="phone" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">

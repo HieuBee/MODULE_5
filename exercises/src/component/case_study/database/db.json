@@ -1,4 +1,18 @@
 {
+  "rentalPeriodService": [
+    {
+      "id": 1,
+      "name": "Day"
+    },
+    {
+      "id": 2,
+      "name": "Month"
+    },
+    {
+      "id": 3,
+      "name": "Year"
+    }
+  ],
   "nameService": [
     {
       "id": 1,
@@ -87,6 +101,46 @@
       "people": 3,
       "rentalPeriod": "Year",
       "id": 9
+    },
+    {
+      "name": "House",
+      "s": 0,
+      "expense": 0,
+      "people": 0,
+      "rentalPeriod": "Month",
+      "id": 10
+    },
+    {
+      "name": "",
+      "s": 0,
+      "expense": 0,
+      "people": 0,
+      "rentalPeriod": "",
+      "id": 11
+    },
+    {
+      "name": "",
+      "s": 0,
+      "expense": 0,
+      "people": 0,
+      "rentalPeriod": "",
+      "id": 12
+    },
+    {
+      "name": "",
+      "s": 2,
+      "expense": 0,
+      "people": 0,
+      "rentalPeriod": "",
+      "id": 13
+    },
+    {
+      "name": "Villa",
+      "s": 2,
+      "expense": 2,
+      "people": 2,
+      "rentalPeriod": "",
+      "id": 14
     }
   ],
   "customer": [

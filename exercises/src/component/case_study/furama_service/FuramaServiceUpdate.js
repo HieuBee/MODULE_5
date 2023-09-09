@@ -3,6 +3,7 @@ import {toast} from "react-toastify";
 import * as frService from "../conectAPI/conectAPI";
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import * as Yup from "yup";
 
 export function FuramaServiceUpdate() {
     const [service, setService] = useState([]);
@@ -36,29 +37,38 @@ export function FuramaServiceUpdate() {
                                 enableReinitialize={true}
 
                                 initialValues={
-                                {
-                                    name: service.name,
-                                    s: service.s,
-                                    expense: service.expense,
-                                    people: service.people,
-                                    rentalPeriod: service.rentalPeriod
-                                    /*"name": "Villa",
-                                    "s": 100,
-                                    "expense": 1600,
-                                    "people": 5,
-                                    "rentalPeriod": "Day"*/
+                                    {
+                                        name: service.name,
+                                        s: service.s,
+                                        expense: service.expense,
+                                        people: service.people,
+                                        rentalPeriod: service.rentalPeriod
+                                    }
                                 }
-                            }
-                                    onSubmit={(values, {setSubmitting}) => {
-                                        updateService(idParam.id, values);
-                                        setSubmitting(false);
-                                    }}
+                                onSubmit={(values, {setSubmitting}) => {
+                                    updateService(idParam.id, values);
+                                    setSubmitting(false);
+                                }}
+                                validationSchema={
+                                    Yup.object({
+                                        name: Yup.string()
+                                            .required("Required"),
+                                        s: Yup.number()
+                                            .required("Required"),
+                                        expense: Yup.number()
+                                            .required("Required"),
+                                        people: Yup.number()
+                                            .required("Required"),
+                                        rentalPeriod: Yup.string()
+                                            .required("Required"),
+                                    })
+                                }
                             >
                                 <Form>
                                     <div className="mb-3">
                                         <label className="form-label">Name</label>
                                         <Field type="text" name="name" className="form-control"/>
-                                        <ErrorMessage name="id" className="form-err" component='span'></ErrorMessage>
+                                        <ErrorMessage name="name" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Area</label>

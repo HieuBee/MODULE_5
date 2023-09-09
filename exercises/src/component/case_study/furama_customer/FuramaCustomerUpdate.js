@@ -4,6 +4,7 @@ import * as frService from "../conectAPI/conectAPI";
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {updateCustomer} from "../conectAPI/conectAPI";
+import * as Yup from "yup";
 
 export function FuramaCustomerUpdate() {
     const [customer, setCustomer] = useState([]);
@@ -37,20 +38,42 @@ export function FuramaCustomerUpdate() {
                                 enableReinitialize={true}
 
                                 initialValues={
-                                {
-                                    name: customer.name,
-                                    birthday: customer.birthday,
-                                    gender: customer.gender,
-                                    idCard: customer.idCard,
-                                    phone: customer.phone,
-                                    level: customer.level,
-                                    address: customer.address
+                                    {
+                                        name: customer.name,
+                                        birthday: customer.birthday,
+                                        gender: customer.gender,
+                                        idCard: customer.idCard,
+                                        phone: customer.phone,
+                                        level: customer.level,
+                                        address: customer.address
+                                    }
                                 }
-                            }
-                                    onSubmit={(values, {setSubmitting}) => {
-                                        updateCustomer(idParam.id, values);
-                                        setSubmitting(false);
-                                    }}
+                                onSubmit={(values, {setSubmitting}) => {
+                                    updateCustomer(idParam.id, values);
+                                    setSubmitting(false);
+                                }}
+                                validationSchema={
+                                    Yup.object({
+                                        name: Yup.string()
+                                            .required("Required")
+                                            .matches(/^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(?: [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)*/, "Tên không đúng định dạng!"),
+                                        phone: Yup.string()
+                                            .required("Required")
+                                            .matches(/((090|091)+([0-9]{7})) | ((84)+[+]+(90|91)+([0-9]{8}))/, "Số điện thoại không đúng định dạng!"),
+                                        idCard: Yup.string()
+                                            .required("Required")
+                                            .matches(/([0-9]{9}) | ([0-9]{12})/, "CMNN/CCCD không đúng định dạng!"),
+                                        email: Yup.string()
+                                            .required("Required")
+                                            .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email không đúng định dạng!"),
+                                        address: Yup.string()
+                                            .required("Required"),
+                                        level: Yup.string()
+                                            .required("Required"),
+                                        birthday: Yup.string()
+                                            .required("Required"),
+                                    })
+                                }
                             >
                                 <Form>
                                     <div className="mb-3">
