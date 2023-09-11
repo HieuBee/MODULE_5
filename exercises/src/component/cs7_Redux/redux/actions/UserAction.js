@@ -1,7 +1,7 @@
-import * as studentService from "../../connectAPI/ConnectAPI";
+import * as userService from "../../connectAPI/ConnectAPI";
 
 export const getAll =() => async(dispatch) => {
-    const res = await studentService.getAllUser();
+    const res = await userService.getAllUser();
     dispatch({
         type: "get_all",
         payload: res
@@ -9,10 +9,9 @@ export const getAll =() => async(dispatch) => {
 };
 
 export const deleteById = (id) => async(dispatch) => {
-    const res = await studentService.deleteUser(id);
+    const res = await userService.deleteUser(id);
     dispatch({
         type: "delete",
         payload: res
     })
-
 }

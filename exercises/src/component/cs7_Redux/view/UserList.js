@@ -4,7 +4,7 @@ import {deleteById, getAll} from "../redux/actions/UserAction";
 import {toast} from "react-toastify";
 
 export function UserList() {
-    const users = useSelector(store => store.students)
+    const users = useSelector(store => store.users)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAll());

@@ -2,12 +2,11 @@ import {useEffect, useState} from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {toast} from "react-toastify";
 import * as bookService from "../service/Service";
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 
 export function Book() {
     const [bookList, setBookList] = useState([]);
-    const idParam = useParams();
     const navigate = useNavigate();
     useEffect(() => {
         getAll()

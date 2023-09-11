@@ -104,7 +104,7 @@ export function FuramaServiceCreate() {
                                                 )
                                             })}
                                         </Field>
-                                        {/*<ErrorMessage name="rentalPeriod" className="form-err" component='span'></ErrorMessage>*/}
+                                        <ErrorMessage name="rentalPeriod" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <button className="btn btn-primary">Submit</button>
                                 </Form>

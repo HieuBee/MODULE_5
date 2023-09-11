@@ -38,9 +38,13 @@ function App() {
             {/*<HealthDeclaration />*/}
             {/*<Library />*/}
             {/*<TodoList />*/}
+            {/*Case Study Mudule 5*/}
             <Header />
             <Footer />
+
+            {/*cs7 - Redux*/}
             {/*<UserIndex />*/}
+
             {/*<ToastContainer />*/}
         </>
     );

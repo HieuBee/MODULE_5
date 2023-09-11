@@ -1,9 +1,13 @@
 import {useEffect, useState} from "react";
 import * as service from "../conectAPI/conectAPI";
 import {NavLink} from "react-router-dom";
+import {Modal} from "react-bootstrap";
+import {toast} from "react-toastify";
 
 export function FuramaServiceList() {
+    const [isOpen, setIsOpen] = useState(false);
     const [services, setServices] = useState([]);
+    const [idDelete, setIdDelete] = useState(0);
 
     useEffect(() => {
         getServices()
@@ -12,6 +16,19 @@ export function FuramaServiceList() {
     const getServices = async () => {
         const result = await service.getServices();
         setServices(result);
+    };
+
+    const showModal = () => {
+        setIsOpen(true);
+    };
+
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
+    const deleteService = async () => {
+        await service.deleteService(idDelete);
+        toast.success("Xoá thành công")
     };
 
     return (
@@ -42,8 +59,12 @@ export function FuramaServiceList() {
                                             <td>{s.rentalPeriod}</td>
                                             <td>
                                                 <NavLink to={`/service/update/${s.id}`}>
-                                                    <button className="btn btn-danger">Update</button>
+                                                    <button className="btn btn-primary">Update</button>
                                                 </NavLink>
+                                                <button className="btn btn-danger" onClick={() => {
+                                                    showModal();
+                                                    setIdDelete(s.id);
+                                                }}>Delete</button>
                                             </td>
                                         </tr>
                                     </>
@@ -54,6 +75,21 @@ export function FuramaServiceList() {
                     </div>
                 </div>
             </div>
+            <Modal show={isOpen} onHide={hideModal}>
+                <Modal.Header>
+                    <Modal.Title>Hi</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Remove service with id: {idDelete}</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn btn-danger" onClick={
+                        () => {
+                            deleteService();
+                            hideModal();
+                        }
+                    }>Delete</button>
+                    <button className="btn btn-secondary" onClick={hideModal}>Cancel</button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

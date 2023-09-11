@@ -36,6 +36,15 @@ export const getService = async (id) => {
     }
 };
 
+export const deleteService = async (id) => {
+    try {
+        const result = await axios.delete(`http://localhost:8080/service/${id}`);
+        return result.data;
+    } catch (e) {
+        console.log(e)
+    }
+};
+
 export const updateService = async(id, value) => {
     try {
         const result = await axios.patch(`http://localhost:8080/service/${id}`, value);

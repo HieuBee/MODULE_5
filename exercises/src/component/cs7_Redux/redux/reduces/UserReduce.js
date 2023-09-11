@@ -1,13 +1,13 @@
-const studentReducer = (students = [], action) => {
+const userReducer = (users = [], action) => {
     const {type, payload} = action;
 
     switch (type) {
         case "get_all":
             return payload;
         case "delete":
-            return [...students, payload];
+            return [...users, payload];
         default:
-            return students;
+            return users;
     }
 }
-export default studentReducer;
+export default userReducer;
