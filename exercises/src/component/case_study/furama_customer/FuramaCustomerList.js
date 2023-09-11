@@ -1,9 +1,13 @@
 import {useEffect, useState} from "react";
 import * as service from "../conectAPI/conectAPI";
 import {NavLink} from "react-router-dom";
+import {Modal} from "react-bootstrap";
+import {toast} from "react-toastify";
 
 export function FuramaCustomerList() {
     const [customers, setCustomer] = useState([]);
+    const [idDelete, setIdDelete] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         getCustomers()
@@ -14,6 +18,18 @@ export function FuramaCustomerList() {
         setCustomer(result);
     };
 
+    const showModal = () => {
+        setIsOpen(true);
+    };
+
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
+    const deleteService = async () => {
+        await service.deleteCustomer(idDelete);
+        getCustomers();
+    };
     return (
         <>
             <div className="container">
@@ -46,8 +62,12 @@ export function FuramaCustomerList() {
                                             <td>{c.address}</td>
                                             <td>
                                                 <NavLink to={`/customer/update/${c.id}`}>
-                                                    <button className="btn btn-danger">Update</button>
+                                                    <button className="btn btn-primary">Update</button>
                                                 </NavLink>
+                                                <button className="btn btn-danger" onClick={() => {
+                                                    showModal();
+                                                    setIdDelete(c.id);
+                                                }}>Delete</button>
                                             </td>
                                         </tr>
                                     </>
@@ -58,6 +78,21 @@ export function FuramaCustomerList() {
                     </div>
                 </div>
             </div>
+            <Modal show={isOpen} onHide={hideModal}>
+                <Modal.Header>
+                    <Modal.Title>Hi</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Remove service with id: {idDelete}</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn btn-danger" onClick={
+                        () => {
+                            deleteService();
+                            hideModal();
+                        }
+                    }>Delete</button>
+                    <button className="btn btn-secondary" onClick={hideModal}>Cancel</button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

@@ -9,9 +9,17 @@ export function FuramaServiceUpdate() {
     const [service, setService] = useState([]);
     const navigate = useNavigate();
     const idParam = useParams();
+    const [nameServices, setNameServices] = useState([]);
+    const rentalPeriod = ["Day", "Month", "Year"];
+
+    const getNameServices = async () => {
+        const result = await frService.getNameService();
+        setNameServices(result);
+    };
 
     useEffect(() => {
-        getService()
+        getService();
+        getNameServices();
     }, []);
 
     const getService = async () => {
@@ -67,7 +75,15 @@ export function FuramaServiceUpdate() {
                                 <Form>
                                     <div className="mb-3">
                                         <label className="form-label">Name</label>
-                                        <Field type="text" name="name" className="form-control"/>
+                                        <Field as="select" name="name" className="form-select">
+                                            {nameServices.map((n) => {
+                                                return (
+                                                    <>
+                                                        <option value={n.name}>{n.name}</option>
+                                                    </>
+                                                )
+                                            })}
+                                        </Field>
                                         <ErrorMessage name="name" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">
@@ -82,7 +98,15 @@ export function FuramaServiceUpdate() {
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Rental Period</label>
-                                        <Field type="text" name="rentalPeriod" className="form-control"/>
+                                        <Field as="select" name="rentalPeriod" className="form-select">
+                                            {rentalPeriod.map((n) => {
+                                                return (
+                                                    <>
+                                                        <option value={n}>{n}</option>
+                                                    </>
+                                                )
+                                            })}
+                                        </Field>
                                         <ErrorMessage name="rentalPeriod" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <button className="btn btn-primary">Submit</button>

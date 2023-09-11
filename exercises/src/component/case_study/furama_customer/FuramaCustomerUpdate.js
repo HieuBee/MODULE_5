@@ -88,7 +88,10 @@ export function FuramaCustomerUpdate() {
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label" htmlFor="quan">Gender</label>
-                                        <Field type="number" name="gender" className="form-control"/>
+                                        <Field as="select" name="gender" className="form-select">
+                                            <option value="1">Nam</option>
+                                            <option value="0">Nữ</option>
+                                        </Field>
                                         <ErrorMessage name="gender" className="form-err" component='span'></ErrorMessage>
                                     </div>
                                     <div className="mb-3">

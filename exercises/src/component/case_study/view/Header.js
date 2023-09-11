@@ -15,10 +15,10 @@ export function Header() {
     return (
         <>
             <BrowserRouter>
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="menu-wrap">
+                            <div className="menu-wrap" style={{background: "#0003"}}>
                                 <ul className="menu">
                                     <li className="menu-item">
                                         <span>Service</span>

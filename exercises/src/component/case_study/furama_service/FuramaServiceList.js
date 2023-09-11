@@ -3,11 +3,13 @@ import * as service from "../conectAPI/conectAPI";
 import {NavLink} from "react-router-dom";
 import {Modal} from "react-bootstrap";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 export function FuramaServiceList() {
     const [isOpen, setIsOpen] = useState(false);
     const [services, setServices] = useState([]);
     const [idDelete, setIdDelete] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getServices()
@@ -28,7 +30,7 @@ export function FuramaServiceList() {
 
     const deleteService = async () => {
         await service.deleteService(idDelete);
-        toast.success("Xoá thành công")
+        getServices();
     };
 
     return (

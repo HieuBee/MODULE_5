@@ -105,16 +105,6 @@
   ],
   "customer": [
     {
-      "id": 1,
-      "name": "Nam",
-      "birthday": "22/02/2002",
-      "gender": 1,
-      "idCard": "0228312",
-      "phone": "0983126312",
-      "level": "Silver",
-      "address": "22 BTX"
-    },
-    {
       "id": 2,
       "name": "Mai",
       "birthday": "01/12/2004",
@@ -143,49 +133,6 @@
       "phone": "0124126312",
       "level": "Diamond",
       "address": "32 TTT"
-    },
-    {
-      "name": "HieuBee",
-      "birthday": "",
-      "gender": 1,
-      "idCard": 2345234,
-      "phone": "2342344234",
-      "level": "aa",
-      "address": "asda",
-      "Birthday": "2023-09-07",
-      "id": 5
-    },
-    {
-      "name": "HieuBee",
-      "birthday": "",
-      "gender": 1,
-      "idCard": 234234,
-      "phone": 24235,
-      "level": "sdfsf",
-      "address": "sdfdsf",
-      "Birthday": "asdf",
-      "id": 6
-    },
-    {
-      "name": "mansdfn",
-      "birthday": "",
-      "gender": 1,
-      "idCard": 234234,
-      "phone": 52525,
-      "level": "dsdn",
-      "address": "sgsdg",
-      "Birthday": "sdmfsmdfn",
-      "id": 7
-    },
-    {
-      "name": "Hieu",
-      "birthday": "11111111111111",
-      "gender": 1,
-      "idCard": 3436,
-      "phone": 3452,
-      "level": "gdhsdgh",
-      "address": "shsrgh",
-      "id": 8
     }
   ],
   "employee": [

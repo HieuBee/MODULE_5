@@ -92,7 +92,16 @@ export const updateCustomer = async(id, value) => {
     }
 }
 
-//CONTACT
+export const deleteCustomer = async (id) => {
+    try {
+        const result = await axios.delete(`http://localhost:8080/customer/${id}`);
+        return result.data;
+    } catch (e) {
+        console.log(e)
+    }
+};
+
+//CONTRACT
 export const getContracts = async () => {
     try {
         const result = await axios.get("http://localhost:8080/contract");
@@ -110,3 +119,12 @@ export const addNewContract = async(value) => {
         console.log(e)
     }
 }
+
+export const deleteContract = async (id) => {
+    try {
+        const result = await axios.delete(`http://localhost:8080/contract/${id}`);
+        return result.data;
+    } catch (e) {
+        console.log(e)
+    }
+};
