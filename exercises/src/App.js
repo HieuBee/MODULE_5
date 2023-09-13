@@ -18,6 +18,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {FuramaServiceList} from "./component/case_study/furama_service/FuramaServiceList";
 import {FuramaServiceCreate} from "./component/case_study/furama_service/FuramaServiceCreate";
 import {FuramaServiceUpdate} from "./component/case_study/furama_service/FuramaServiceUpdate";
+import {UserList} from "./component/cs7_Redux/view/UserList";
 import {UserIndex} from "./component/cs7_Redux/view/UserIndex";
 
 
@@ -44,7 +45,6 @@ function App() {
 
             {/*cs7 - Redux*/}
             {/*<UserIndex />*/}
-
             {/*<ToastContainer />*/}
         </>
     );

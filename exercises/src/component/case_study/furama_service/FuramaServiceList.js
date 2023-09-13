@@ -54,7 +54,7 @@ export function FuramaServiceList() {
                                 return (
                                     <>
                                         <tr>
-                                            <td>{s.name}</td>
+                                            <td>{s.name.name}</td>
                                             <td>{s.s}</td>
                                             <td>{s.expense}</td>
                                             <td>{s.people}</td>

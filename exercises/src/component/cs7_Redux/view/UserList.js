@@ -16,7 +16,6 @@ export function UserList() {
         toast.success("Xoá thành công")
         dispatch(getAll());
     };
-
     return (
         <>
             <div className="container">

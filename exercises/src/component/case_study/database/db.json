@@ -30,77 +30,38 @@
   "service": [
     {
       "id": 1,
-      "name": "Villa",
+      "name": {
+        "id": 1,
+        "name": "Villa"
+      },
       "s": 100,
       "expense": 1666,
       "people": 5,
       "rentalPeriod": "Day"
     },
     {
-      "id": 2,
-      "name": "House",
-      "s": 70,
-      "expense": 36000,
-      "people": 2,
-      "rentalPeriod": "Year"
-    },
-    {
-      "id": 3,
-      "name": "Villa",
-      "s": 135,
-      "expense": 1400,
-      "people": 2,
-      "rentalPeriod": "Day"
-    },
-    {
-      "id": 4,
-      "name": "Room",
-      "s": 45,
-      "expense": 300,
-      "people": 2,
-      "rentalPeriod": "Day"
-    },
-    {
-      "id": 5,
-      "name": "Room",
-      "s": 65,
-      "expense": 22000,
-      "people": 3,
-      "rentalPeriod": "Month"
-    },
-    {
-      "name": "Villa",
-      "s": 0,
-      "expense": 21000,
-      "people": 0,
-      "rentalPeriod": "Month",
-      "area": 138,
-      "id": 6
-    },
-    {
-      "name": "Room",
-      "s": 0,
-      "expense": 200,
-      "people": 0,
-      "rentalPeriod": "Day",
-      "area": 45,
-      "id": 7
-    },
-    {
-      "name": "Room",
-      "s": 50,
-      "expense": 200,
+      "name": "[object Object]",
+      "s": 2321,
+      "expense": 1234,
       "people": 2,
       "rentalPeriod": "Day",
-      "id": 8
+      "id": 2
     },
     {
-      "name": "House",
-      "s": 200,
-      "expense": 77000,
-      "people": 3,
-      "rentalPeriod": "Year",
-      "id": 9
+      "name": "[object Object]",
+      "s": 43643,
+      "expense": 4534,
+      "people": 2,
+      "rentalPeriod": "Day",
+      "id": 3
+    },
+    {
+      "name": "{\"n\":{\"id\":2,\"name\":\"House\"}}",
+      "s": 23423,
+      "expense": 2434,
+      "people": 42434,
+      "rentalPeriod": "Day",
+      "id": 4
     }
   ],
   "customer": [

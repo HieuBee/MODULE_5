@@ -70,7 +70,7 @@ export function FuramaServiceCreate() {
                                             {nameServices.map((n) => {
                                                 return (
                                                     <>
-                                                        <option value={n.name}>{n.name}</option>
+                                                        <option value={JSON.stringify({n})}>{n.name}</option>
                                                     </>
                                                 )
                                             })}
